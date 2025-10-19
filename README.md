@@ -323,15 +323,16 @@ copies of the Software...
 
 ## 👏 Acknowledgments
 
-- Built with ❤️ by the Fouad Music Team
+- Built with ❤️ by **Fouad Zalaf** ([@1.pvl](https://instagram.com/1.pvl) • [@fod1v](https://instagram.com/fod1v))
 - Inspired by Spotify, iTunes, and professional audio software
 - Thanks to all contributors and users
 
-## 💬 Support
+## 💬 Support & Contact
 
 - 🐛 **Bug Reports**: [Open an issue](https://github.com/yourusername/fouad-music/issues)
 - 💡 **Feature Requests**: [Start a discussion](https://github.com/yourusername/fouad-music/discussions)
-- 📧 **Email**: support@fouadmusic.com
+- 📧 **Email**: [zalaffouad37@gmail.com](mailto:zalaffouad37@gmail.com)
+- 📱 **Instagram**: [@1.pvl](https://instagram.com/1.pvl) • [@fod1v](https://instagram.com/fod1v)
 - 💬 **Discord**: [Join our community](https://discord.gg/fouadmusic)
 
 ## ⭐ Star History
@@ -342,7 +343,7 @@ If you like this project, please give it a ⭐️!
 
 <div align="center">
 
-### Made with 💜 and 🎵
+### Made with fouad💜 and 🎵
 
 **[⬆ Back to Top](#-fouad-music)**
 
