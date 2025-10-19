@@ -1,0 +1,38 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Gradient Definitions -->
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#8b5cf6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ec4899;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#8b5cf6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ec4899;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background Circle -->
+  <circle cx="256" cy="256" r="240" fill="url(#grad1)" opacity="0.1"/>
+  
+  <!-- Outer Ring -->
+  <circle cx="256" cy="256" r="200" fill="none" stroke="url(#grad1)" stroke-width="12"/>
+  
+  <!-- Music Note -->
+  <path d="M320 120 L320 340 C320 365 305 380 280 380 C255 380 240 365 240 340 C240 315 255 300 280 300 C290 300 300 302 310 307 L310 180 L220 200 L220 380 C220 405 205 420 180 420 C155 420 140 405 140 380 C140 355 155 340 180 340 C190 340 200 342 210 347 L210 160 L320 120 Z" 
+        fill="url(#grad2)" stroke="url(#grad1)" stroke-width="4"/>
+  
+  <!-- Sound Waves -->
+  <path d="M 380 220 Q 400 240 380 260" fill="none" stroke="url(#grad1)" stroke-width="8" stroke-linecap="round" opacity="0.7"/>
+  <path d="M 410 200 Q 440 240 410 280" fill="none" stroke="url(#grad1)" stroke-width="8" stroke-linecap="round" opacity="0.5"/>
+  <path d="M 440 180 Q 480 240 440 300" fill="none" stroke="url(#grad1)" stroke-width="8" stroke-linecap="round" opacity="0.3"/>
+  
+  <!-- Equalizer Bars -->
+  <rect x="100" y="430" width="12" height="50" rx="6" fill="url(#grad2)" opacity="0.8"/>
+  <rect x="125" y="410" width="12" height="70" rx="6" fill="url(#grad2)" opacity="0.9"/>
+  <rect x="150" y="420" width="12" height="60" rx="6" fill="url(#grad2)"/>
+  <rect x="175" y="400" width="12" height="80" rx="6" fill="url(#grad2)" opacity="0.85"/>
+  
+  <!-- Letter F -->
+  <text x="256" y="140" font-family="Arial, sans-serif" font-size="80" font-weight="bold" fill="url(#grad1)" text-anchor="middle">F</text>
+</svg>

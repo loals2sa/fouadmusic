@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fouad Music - Advanced Music Player</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="background-animation">
+        <div class="wave wave1"></div>
+        <div class="wave wave2"></div>
+        <div class="wave wave3"></div>
+        <div class="particles" id="particles"></div>
+    </div>
+
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo-section">
+                <img src="assets/logo.svg" alt="Fouad Music" class="logo">
+                <h1>Fouad Music</h1>
+            </div>
+            <div class="header-controls">
+                <button class="btn-icon" id="downloadBtn" title="Download from URL">
+                    <i class="fas fa-download"></i>
+                </button>
+                <button class="btn-icon" id="addMusicBtn" title="Add Music">
+                    <i class="fas fa-folder-plus"></i>
+                </button>
+                <button class="btn-icon" id="settingsBtn" title="Settings">
+                    <i class="fas fa-cog"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Sidebar - Playlist -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <h2><i class="fas fa-music"></i> Playlist</h2>
+                    <button class="btn-clear" id="clearPlaylist" title="Clear All">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+                <div class="playlist" id="playlist">
+                    <div class="empty-state">
+                        <i class="fas fa-compact-disc"></i>
+                        <p>No tracks yet</p>
+                        <p class="hint">Add music or download from URL</p>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Center - Now Playing & Visualizer -->
+            <section class="center-panel">
+                <div class="now-playing">
+                    <div class="album-art" id="albumArt">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <div class="track-info">
+                        <h2 id="trackTitle">No Track Playing</h2>
+                        <p id="trackArtist">Select a track to begin</p>
+                    </div>
+                </div>
+
+                <!-- Audio Visualizer -->
+                <canvas id="visualizer"></canvas>
+
+                <!-- Player Controls -->
+                <div class="player-controls">
+                    <div class="progress-container">
+                        <span class="time" id="currentTime">0:00</span>
+                        <input type="range" class="progress-bar" id="progressBar" min="0" max="100" value="0">
+                        <span class="time" id="duration">0:00</span>
+                    </div>
+                    
+                    <div class="control-buttons">
+                        <button class="btn-control" id="shuffleBtn" title="Shuffle">
+                            <i class="fas fa-random"></i>
+                        </button>
+                        <button class="btn-control" id="prevBtn" title="Previous">
+                            <i class="fas fa-step-backward"></i>
+                        </button>
+                        <button class="btn-control btn-play" id="playBtn" title="Play">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <button class="btn-control" id="nextBtn" title="Next">
+                            <i class="fas fa-step-forward"></i>
+                        </button>
+                        <button class="btn-control" id="repeatBtn" title="Repeat">
+                            <i class="fas fa-redo"></i>
+                        </button>
+                    </div>
+
+                    <div class="volume-control">
+                        <i class="fas fa-volume-up" id="volumeIcon"></i>
+                        <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="70">
+                        <span class="volume-value" id="volumeValue">70%</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Panel - Mixer & Effects -->
+            <aside class="mixer-panel">
+                <div class="mixer-header">
+                    <h2><i class="fas fa-sliders-h"></i> Mixer & Effects</h2>
+                </div>
+
+                <!-- Bass Booster -->
+                <div class="mixer-section">
+                    <h3><i class="fas fa-drum"></i> Bass Booster</h3>
+                    <div class="control-group">
+                        <label>Bass Level</label>
+                        <input type="range" class="mixer-slider" id="bassSlider" min="-10" max="10" value="0" step="0.5">
+                        <span class="value-display" id="bassValue">0 dB</span>
+                    </div>
+                </div>
+
+                <!-- 10-Band Equalizer -->
+                <div class="mixer-section">
+                    <h3><i class="fas fa-wave-square"></i> Equalizer</h3>
+                    <div class="equalizer">
+                        <div class="eq-band">
+                            <input type="range" class="eq-slider" data-freq="32" min="-12" max="12" value="0" step="1" orient="vertical">
+                            <span class="eq-label">32Hz</span>
+                        </div>
+                        <div class="eq-band">
+                            <input type="range" class="eq-slider" data-freq="64" min="-12" max="12" value="0" step="1" orient="vertical">
+                            <span class="eq-label">64Hz</span>
+                        </div>
+                        <div class="eq-band">
+                            <input type="range" class="eq-slider" data-freq="125" min="-12" max="12" value="0" step="1" orient="vertical">
+                            <span class="eq-label">125Hz</span>
+                        </div>
+                        <div class="eq-band">
+                            <input type="range" class="eq-slider" data-freq="250" min="-12" max="12" value="0" step="1" orient="vertical">
+                            <span class="eq-label">250Hz</span>
+                        </div>
+                        <div class="eq-band">
+                            <input type="range" class="eq-slider" data-freq="500" min="-12" max="12" value="0" step="1" orient="vertical">
+                            <span class="eq-label">500Hz</span>
+                        </div>
+                        <div class="eq-band">
+                            <input type="range" class="eq-slider" data-freq="1000" min="-12" max="12" value="0" step="1" orient="vertical">
+                            <span class="eq-label">1kHz</span>
+                        </div>
+                        <div class="eq-band">
+                            <input type="range" class="eq-slider" data-freq="2000" min="-12" max="12" value="0" step="1" orient="vertical">
+                            <span class="eq-label">2kHz</span>
+                        </div>
+                        <div class="eq-band">
+                            <input type="range" class="eq-slider" data-freq="4000" min="-12" max="12" value="0" step="1" orient="vertical">
+                            <span class="eq-label">4kHz</span>
+                        </div>
+                        <div class="eq-band">
+                            <input type="range" class="eq-slider" data-freq="8000" min="-12" max="12" value="0" step="1" orient="vertical">
+                            <span class="eq-label">8kHz</span>
+                        </div>
+                        <div class="eq-band">
+                            <input type="range" class="eq-slider" data-freq="16000" min="-12" max="12" value="0" step="1" orient="vertical">
+                            <span class="eq-label">16kHz</span>
+                        </div>
+                    </div>
+                    <button class="btn-reset" id="resetEqBtn">Reset Equalizer</button>
+                </div>
+
+                <!-- Audio Effects -->
+                <div class="mixer-section">
+                    <h3><i class="fas fa-magic"></i> Effects</h3>
+                    <div class="control-group">
+                        <label>
+                            <input type="checkbox" id="reverbCheck">
+                            Reverb
+                        </label>
+                    </div>
+                    <div class="control-group">
+                        <label>
+                            <input type="checkbox" id="echoCheck">
+                            Echo
+                        </label>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Download Modal -->
+    <div class="modal" id="downloadModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2><i class="fas fa-download"></i> Download Music</h2>
+                <button class="modal-close" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <label>Enter URL (YouTube, SoundCloud, etc.)</label>
+                    <input type="text" id="urlInput" placeholder="https://youtube.com/watch?v=..." class="url-input">
+                </div>
+                <div class="download-status" id="downloadStatus"></div>
+                <div class="progress-container" id="downloadProgressContainer" style="display: none;">
+                    <div class="progress-bar-fill" id="downloadProgressBar"></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="cancelDownload">Cancel</button>
+                <button class="btn-primary" id="startDownload">
+                    <i class="fas fa-download"></i> Download
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <audio id="audioPlayer"></audio>
+
+    <script src="renderer.js"></script>
+</body>
+</html>
